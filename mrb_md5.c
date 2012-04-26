@@ -1,8 +1,5 @@
 #include <mruby.h>
-#include <mruby/proc.h>
 #include <mruby/string.h>
-//#include <mruby/class.h>
-//#include <mruby/variable.h>
 #include "md5.h"
 
 static struct RClass *_class_md5;
