@@ -1,11 +1,10 @@
 MRUBY_ROOT = ../..
-TARGET := $(MRUBY_ROOT)/lib/ritevm
 ifeq ($(OS),Windows_NT)
-MRUBY_LIB := $(TARGET).lib
-LIB = $(MRUBY_LIB)
+MRUBY_LIB := $(MRUBY_ROOT)/lib/libmruby.a
+LDFLAGS = $(MRUBY_LIB) ../libmrb_md5.a
 else
-MRUBY_LIB := $(TARGET).a
-LIB = $(MRUBY_LIB)
+MRUBY_LIB := $(MRUBY_ROOT)/lib/libmruby.a
+LDFLAGS = $(MRUBY_LIB) ../libmrb_md5.a
 endif
 
 INCLUDES = -I$(MRUBY_ROOT)/include -I$(MRUBY_ROOT)/src -I..
@@ -19,7 +18,7 @@ all : main
 	@echo done
 
 main : main.c
-	gcc $(CFLAGS) -o main main.c ../libmrb_md5.a $(LIB)
+	gcc $(CFLAGS) -o main main.c ../libmrb_md5.a $(LDFLAGS)
 
 clean :
 	rm -f *.o main
