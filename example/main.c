@@ -1,7 +1,7 @@
 #include <mruby.h>
 #include <mruby/proc.h>
 #include <mruby/data.h>
-#include <compile.h>
+#include <mruby/compile.h>
 #include <mrb_md5.h>
 
 #define _(...) #__VA_ARGS__ "\n"
