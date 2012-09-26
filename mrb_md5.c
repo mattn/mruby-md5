@@ -23,7 +23,7 @@ mrb_md5_hex(mrb_state *mrb, mrb_value self)
   md5_state_t pms;
   md5_byte_t digest[16];
   md5_byte_t digest_hex[33];
-  mrb_value arg;
+  mrb_value arg = mrb_nil_value();
   int i;
 
   mrb_get_args(mrb, "o", &arg);
@@ -32,9 +32,8 @@ mrb_md5_hex(mrb_state *mrb, mrb_value self)
   }
 
   md5_init(&pms);
-  md5_append(&pms, (const md5_byte_t*) RSTRING_PTR(arg), RSTRING_CAPA(arg));
+  md5_append(&pms, (const md5_byte_t*) RSTRING_PTR(arg), RSTRING_LEN(arg));
   md5_finish(&pms, digest);
-
 
   for (i = 0; i < 16; i++) {
     digest_hex[i*2+0] = nr2char((digest[i] >> 4) & 0xf);
