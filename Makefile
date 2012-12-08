@@ -1,4 +1,4 @@
-GEM := mruby_md5
+GEM := mruby-md5
 
 include $(MAKEFILE_4_GEM)
 
