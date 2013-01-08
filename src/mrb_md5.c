@@ -2,8 +2,6 @@
 #include <mruby/string.h>
 #include "md5.h"
 
-static struct RClass *_class_md5;
-
 /*********************************************************
  * main
  *********************************************************/
@@ -50,7 +48,7 @@ mrb_md5_hex(mrb_state *mrb, mrb_value self)
 
 void
 mrb_mruby_md5_gem_init(mrb_state* mrb) {
-  _class_md5 = mrb_define_module(mrb, "MD5");
+  struct RClass* _class_md5 = mrb_define_module(mrb, "MD5");
   mrb_define_class_method(mrb, _class_md5, "md5_hex", mrb_md5_hex, ARGS_REQ(1));
 }
 
