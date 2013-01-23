@@ -52,4 +52,8 @@ mrb_mruby_md5_gem_init(mrb_state* mrb) {
   mrb_define_class_method(mrb, _class_md5, "md5_hex", mrb_md5_hex, ARGS_REQ(1));
 }
 
+void
+mrb_mruby_md5_gem_final(mrb_state* mrb) {
+}
+
 /* vim:set et ts=2 sts=2 sw=2 tw=0: */
